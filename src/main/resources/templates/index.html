@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>API Crawling</title>
+</head>
+<body>
+<button id="fetchButton" onclick="fetchData()">API 크롤링</button>
+<p id="loadingText" style="display: none;">API 데이터 크롤링 중...</p>
+
+
+<script>
+
+    function fetchData() {
+        document.getElementById('fetchButton').style.display = 'none';
+        document.getElementById('loadingText').style.display = 'block';
+
+        window.location.href = 'http://localhost:8080/plantDetail';
+
+    }
+</script>
+</body>
+</html>
