@@ -59,10 +59,7 @@ public class ApiDataCrawling {
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
-        //System.out.println(response);
 
-        //XmlMapper xmlMapper = new XmlMapper();
-        //PlantDataList plantDataList = xmlMapper.readValue(response, PlantDataList.class);
         SAXReader reader = new SAXReader();
         Document document = reader.read(new StringReader(response));
 
@@ -80,8 +77,6 @@ public class ApiDataCrawling {
             plantData.setCntntsSj(cntntsSj);
             plants.add(plantData);
         }
-
-        //plantDataLists.add(plantDataList);
 
 
         this.totalCount = getTagValue(response, "totalCount");
@@ -129,12 +124,6 @@ public class ApiDataCrawling {
         PlantDataList allPlantDataList = new PlantDataList();
         allPlantDataList.setItems(plants);
 
-        /*
-        for (PlantData plantData : allPlantDataList.getItems()) {
-            System.out.println("CntntsNo : " + plantData.getCntntsNo() + ", CntntsSj : " + plantData.getCntntsSj());
-        }
-
-         */
 
 
         System.out.println("식물 상세 정보 데이터베이스에 저장 중...");
@@ -162,17 +151,22 @@ public class ApiDataCrawling {
                 String fieldName = field.getName();
                 if (!fieldName.equals("cntntsNo") & !fieldName.equals("cntntsSj")) {
                     Element child = item.element(fieldName);
-                    String fieldValue = child.getText();
-                    field.setAccessible(true);
-                    try {
-                        field.set(plantData, fieldValue);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
+                    if (child==null){
+                        System.out.println(fieldName);
                     }
+                    else {
+                        String fieldValue = child.getText();
+                        field.setAccessible(true);
+                        try {
+                            field.set(plantData, fieldValue);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
                 }
             }
 
-            //System.out.println("DB save");
             saveData(plantData);
 
         }

@@ -60,6 +60,34 @@ public class PlantData {
     private String fncltyInfo;          //기능성 정보
     @Column(length = 10)
     private String managedemanddoCode;  //관리요구도 코드
+    @Column(length = 50)
+    private String clCodeNm;
+    @Column(length = 50)
+    private String grwhstleCodeNm;
+    @Column(length = 50)
+    private String indoorpsncpacompositionCodeNm;
+    @Column(length = 50)
+    private String eclgyCodeNm;
+    @Column(length = 50)
+    private String lefmrkCodeNm;
+    @Column(length = 50)
+    private String lefcolrCodeNm;
+    @Column(length = 50)
+    private String ignSeasonCodeNm;
+    @Column(length = 50)
+    private String flclrCodeNm;
+    @Column(length = 50)
+    private String fmldeSeasonCodeNm;
+    @Column(length = 50)
+    private String fmldecolrCodeNm;
+    @Column(length = 50)
+    private String prpgtmthCodeNm;
+    @Column(length = 100)
+    private String lighttdemanddoCodeNm;
+    @Column(length = 255)
+    private String postngplaceCodeNm;
+    @Column(length = 50)
+    private String dlthtsCodeNm;
 
     //getter, setter
 
@@ -176,6 +204,62 @@ public class PlantData {
         return managedemanddoCode;
     }
 
+    public String getClCodeNm() {
+        return clCodeNm;
+    }
+
+    public String getGrwhstleCodeNm() {
+        return grwhstleCodeNm;
+    }
+
+    public String getIndoorpsncpacompositionCodeNm() {
+        return indoorpsncpacompositionCodeNm;
+    }
+
+    public String getEclgyCodeNm() {
+        return eclgyCodeNm;
+    }
+
+    public String getLefmrkCodeNm() {
+        return lefmrkCodeNm;
+    }
+
+    public String getLefcolrCodeNm() {
+        return lefcolrCodeNm;
+    }
+
+    public String getIgnSeasonCodeNm() {
+        return ignSeasonCodeNm;
+    }
+
+    public String getFlclrCodeNm() {
+        return flclrCodeNm;
+    }
+
+    public String getFmldeSeasonCodeNm() {
+        return fmldeSeasonCodeNm;
+    }
+
+    public String getFmldecolrCodeNm() {
+        return fmldecolrCodeNm;
+    }
+
+    public String getPrpgtmthCodeNm() {
+        return prpgtmthCodeNm;
+    }
+
+    public String getLighttdemanddoCodeNm() {
+        return lighttdemanddoCodeNm;
+    }
+
+    public String getPostngplaceCodeNm() {
+        return postngplaceCodeNm;
+    }
+
+    public String getDlthtsCodeNm() {
+        return dlthtsCodeNm;
+    }
+
     public void printData(){
         System.out.println(this.cntntsNo);
         System.out.println(this.adviseInfo);
@@ -202,5 +286,19 @@ public class PlantData {
         System.out.println(this.watercycleWinterCode);
         System.out.println(this.watercycleSummerCode);
         System.out.println(this.winterLwetTpCode);
+        System.out.println(this.clCodeNm);
+        System.out.println(this.grwhstleCodeNm);
+        System.out.println(this.indoorpsncpacompositionCodeNm);
+        System.out.println(this.eclgyCodeNm);
+        System.out.println(this.lefmrkCodeNm);
+        System.out.println(this.lefcolrCodeNm);
+        System.out.println(this.ignSeasonCodeNm);
+        System.out.println(this.flclrCodeNm);
+        System.out.println(this.fmldeSeasonCodeNm);
+        System.out.println(this.fmldecolrCodeNm);
+        System.out.println(this.prpgtmthCodeNm);
+        System.out.println(this.lighttdemanddoCodeNm);
+        System.out.println(this.postngplaceCodeNm);
+        System.out.println(this.dlthtsCodeNm);
     }
 }
