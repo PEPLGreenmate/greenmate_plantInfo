@@ -1,29 +1,36 @@
 package plant.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import plant.demo.service.ApiDataCrawling;
+import plant.demo.service.PlantApiDataCrawling;
 import plant.demo.service.PlantDataList;
+import plant.demo.service.PlantFileApiDataCrawling;
 
 @Controller
+@RequiredArgsConstructor
 public class ApiController {
 
-    private final ApiDataCrawling apiDataCrawling;
-
-
-    @Autowired
-    public ApiController(ApiDataCrawling apiDataCrawling) {
-        this.apiDataCrawling = apiDataCrawling;
-    }
-
+    private final PlantApiDataCrawling plantApiDataCrawling;
+    private final PlantFileApiDataCrawling plantFileApiDataCrawling;
 
     @GetMapping("/plantDetail")
     public String fetchAndSaveGardenListData(Model model) throws Exception {
-        PlantDataList plantDataList = apiDataCrawling.fetchGardenListData();
+        PlantDataList plantDataList = plantApiDataCrawling.fetchGardenListData();
         model.addAttribute("plantDataList", plantDataList.getItems());
         return "plant";
     }
 
+    @GetMapping("/plantImage")
+    public String fetchAndSavePlantImage() throws Exception {
+        plantFileApiDataCrawling.fetchGardenListData();
+        return "plantImage";
+    }
+
+    @GetMapping("/createSql")
+    public String createSql() throws Exception {
+        plantFileApiDataCrawling.createSql();
+        return "index";
+    }
 }

@@ -1,23 +1,23 @@
 package plant.demo.service;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import plant.demo.entity.PlantInfo;
 
 import java.util.List;
 
 
 public class PlantDataList {
-    private List<PlantData> items;
+    private List<PlantInfo> items;
 
 
-    public List<PlantData> getItems() {
+    public List<PlantInfo> getItems() {
         return items;
     }
 
-    public void setItems(List<PlantData> items) {
+    public void setItems(List<PlantInfo> items) {
         this.items = items;
     }
 
-    public void join(List<PlantData> items){
+    public void join(List<PlantInfo> items){
         this.items.addAll(items);
     }
 

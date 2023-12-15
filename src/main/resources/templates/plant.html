@@ -10,47 +10,47 @@
 
 </script>
 <ul>
-    <li th:each="plantData : ${plantDataList}">
-        <div th:text="${plantData.cntntsNo != null ? 'cntntsNo : '+ plantData.cntntsNo : 'cntntsNo 값이 null입니다.'}"></div> <!-- 각 PlantData의 name을 표시 -->
+    <li th:each="plantInfo : ${plantDataList}">
+        <div th:text="${plantInfo.cntntsNo != null ? 'cntntsNo : '+ plantInfo.cntntsNo : 'cntntsNo 값이 null입니다.'}"></div> <!-- 각 PlantData의 name을 표시 -->
         <!-- 필요한 다른 데이터도 이와 같은 방식으로 표시할 수 있습니다 -->
-        <div th:text="${plantData.cntntsSj != null ? 'cntntsSj : ' + plantData.cntntsSj : 'cntntsSj 값이 null입니다.'}"></div>
-        <div th:text="${plantData.plntbneNm != null ? 'plntbneNm : ' + plantData.plntbneNm : 'plntbneNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.plntzrNm != null ? 'plntzrNm : ' + plantData.plntzrNm : 'plntzrNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.distbNm != null ? 'distbNm : ' + plantData.distbNm : 'distbNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.fmlNm != null ? 'fmlNm : ' + plantData.fmlNm : 'fmlNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.orgplceInfo != null ? 'orgplceInfo : ' + plantData.orgplceInfo : 'orgplceInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.adviseInfo != null ? 'adviseInfo : ' + plantData.adviseInfo : 'adviseInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.growthHgInfo != null ? 'growthHgInfo : ' + plantData.growthHgInfo : 'growthHgInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.growthAraInfo != null ? 'growthAraInfo : ' + plantData.growthAraInfo : 'growthAraInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.smellCode != null ? 'smellCode : ' + plantData.smellCode : 'smellCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.toxctyInfo != null ? 'toxctyInfo : ' + plantData.toxctyInfo : 'toxctyInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.managelevelCode != null ? 'managelevelCode : ' + plantData.managelevelCode : 'managelevelCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.grwtveCode != null ? 'grwtveCode : ' + plantData.grwtveCode : 'grwtveCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.grwhTpCode != null ? 'grwhTpCode : ' + plantData.grwhTpCode : 'grwhTpCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.winterLwetTpCode != null ? 'winterLwetTpCode : ' + plantData.winterLwetTpCode : 'winterLwetTpCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.hdCode != null ? 'hdCode : ' + plantData.hdCode : 'hdCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.frtlzrInfo != null ? 'frtlzrInfo : ' + plantData.frtlzrInfo : 'frtlzrInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.watercycleSprngCode != null ? 'watercycleSprngCode : ' + plantData.watercycleSprngCode : 'watercycleSprngCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.watercycleSummerCode != null ? 'watercycleSummerCode : ' + plantData.watercycleSummerCode : 'watercycleSummerCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.watercycleAutumnCode != null ? 'watercycleAutumnCode : ' + plantData.watercycleAutumnCode : 'watercycleAutumnCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.watercycleWinterCode != null ? 'watercycleWinterCode : ' + plantData.watercycleWinterCode : 'watercycleWinterCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.speclmanageInfo != null ? 'speclmanageInfo : ' + plantData.speclmanageInfo : 'speclmanageInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.fncltyInfo != null ? 'fncltyInfo : ' + plantData.fncltyInfo : 'fncltyInfo 값이 null입니다.'}"></div>
-        <div th:text="${plantData.managedemanddoCode != null ? 'managedemanddoCode : ' + plantData.managedemanddoCode : 'managedemanddoCode 값이 null입니다.'}"></div>
-        <div th:text="${plantData.clCodeNm != null ? 'clCodeNm : ' + plantData.clCodeNm : 'clCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.grwhstleCodeNm != null ? 'grwhstleCodeNm : ' + plantData.grwhstleCodeNm : 'grwhstleCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.indoorpsncpacompositionCodeNm != null ? 'indoorpsncpacompositionCodeNm : ' + plantData.indoorpsncpacompositionCodeNm : 'indoorpsncpacompositionCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.eclgyCodeNm != null ? 'eclgyCodeNm : ' + plantData.eclgyCodeNm : 'eclgyCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.lefmrkCodeNm != null ? 'lefmrkCodeNm : ' + plantData.lefmrkCodeNm : 'lefmrkCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.lefcolrCodeNm != null ? 'lefcolrCodeNm : ' + plantData.lefcolrCodeNm : 'lefcolrCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.ignSeasonCodeNm != null ? 'ignSeasonCodeNm : ' + plantData.ignSeasonCodeNm : 'ignSeasonCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.flclrCodeNm != null ? 'flclrCodeNm : ' + plantData.flclrCodeNm : 'flclrCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.fmldeSeasonCodeNm != null ? 'fmldeSeasonCodeNm : ' + plantData.fmldeSeasonCodeNm : 'fmldeSeasonCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.fmldecolrCodeNm != null ? 'fmldecolrCodeNm : ' + plantData.fmldecolrCodeNm : 'fmldecolrCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.prpgtmthCodeNm != null ? 'prpgtmthCodeNm : ' + plantData.prpgtmthCodeNm : 'prpgtmthCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.lighttdemanddoCodeNm != null ? 'lighttdemanddoCodeNm : ' + plantData.lighttdemanddoCodeNm : 'lighttdemanddoCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.postngplaceCodeNm != null ? 'postngplaceCodeNm : ' + plantData.postngplaceCodeNm : 'postngplaceCodeNm 값이 null입니다.'}"></div>
-        <div th:text="${plantData.dlthtsCodeNm != null ? 'dlthtsCodeNm : ' + plantData.dlthtsCodeNm : 'dlthtsCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.cntntsSj != null ? 'cntntsSj : ' + plantInfo.cntntsSj : 'cntntsSj 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.plntbneNm != null ? 'plntbneNm : ' + plantInfo.plntbneNm : 'plntbneNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.plntzrNm != null ? 'plntzrNm : ' + plantInfo.plntzrNm : 'plntzrNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.distbNm != null ? 'distbNm : ' + plantInfo.distbNm : 'distbNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.fmlNm != null ? 'fmlNm : ' + plantInfo.fmlNm : 'fmlNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.orgplceInfo != null ? 'orgplceInfo : ' + plantInfo.orgplceInfo : 'orgplceInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.adviseInfo != null ? 'adviseInfo : ' + plantInfo.adviseInfo : 'adviseInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.growthHgInfo != null ? 'growthHgInfo : ' + plantInfo.growthHgInfo : 'growthHgInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.growthAraInfo != null ? 'growthAraInfo : ' + plantInfo.growthAraInfo : 'growthAraInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.smellCode != null ? 'smellCode : ' + plantInfo.smellCode : 'smellCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.toxctyInfo != null ? 'toxctyInfo : ' + plantInfo.toxctyInfo : 'toxctyInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.managelevelCode != null ? 'managelevelCode : ' + plantInfo.managelevelCode : 'managelevelCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.grwtveCode != null ? 'grwtveCode : ' + plantInfo.grwtveCode : 'grwtveCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.grwhTpCode != null ? 'grwhTpCode : ' + plantInfo.grwhTpCode : 'grwhTpCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.winterLwetTpCode != null ? 'winterLwetTpCode : ' + plantInfo.winterLwetTpCode : 'winterLwetTpCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.hdCode != null ? 'hdCode : ' + plantInfo.hdCode : 'hdCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.frtlzrInfo != null ? 'frtlzrInfo : ' + plantInfo.frtlzrInfo : 'frtlzrInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.watercycleSprngCode != null ? 'watercycleSprngCode : ' + plantInfo.watercycleSprngCode : 'watercycleSprngCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.watercycleSummerCode != null ? 'watercycleSummerCode : ' + plantInfo.watercycleSummerCode : 'watercycleSummerCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.watercycleAutumnCode != null ? 'watercycleAutumnCode : ' + plantInfo.watercycleAutumnCode : 'watercycleAutumnCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.watercycleWinterCode != null ? 'watercycleWinterCode : ' + plantInfo.watercycleWinterCode : 'watercycleWinterCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.speclmanageInfo != null ? 'speclmanageInfo : ' + plantInfo.speclmanageInfo : 'speclmanageInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.fncltyInfo != null ? 'fncltyInfo : ' + plantInfo.fncltyInfo : 'fncltyInfo 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.managedemanddoCode != null ? 'managedemanddoCode : ' + plantInfo.managedemanddoCode : 'managedemanddoCode 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.clCodeNm != null ? 'clCodeNm : ' + plantInfo.clCodeNm : 'clCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.grwhstleCodeNm != null ? 'grwhstleCodeNm : ' + plantInfo.grwhstleCodeNm : 'grwhstleCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.indoorpsncpacompositionCodeNm != null ? 'indoorpsncpacompositionCodeNm : ' + plantInfo.indoorpsncpacompositionCodeNm : 'indoorpsncpacompositionCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.eclgyCodeNm != null ? 'eclgyCodeNm : ' + plantInfo.eclgyCodeNm : 'eclgyCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.lefmrkCodeNm != null ? 'lefmrkCodeNm : ' + plantInfo.lefmrkCodeNm : 'lefmrkCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.lefcolrCodeNm != null ? 'lefcolrCodeNm : ' + plantInfo.lefcolrCodeNm : 'lefcolrCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.ignSeasonCodeNm != null ? 'ignSeasonCodeNm : ' + plantInfo.ignSeasonCodeNm : 'ignSeasonCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.flclrCodeNm != null ? 'flclrCodeNm : ' + plantInfo.flclrCodeNm : 'flclrCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.fmldeSeasonCodeNm != null ? 'fmldeSeasonCodeNm : ' + plantInfo.fmldeSeasonCodeNm : 'fmldeSeasonCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.fmldecolrCodeNm != null ? 'fmldecolrCodeNm : ' + plantInfo.fmldecolrCodeNm : 'fmldecolrCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.prpgtmthCodeNm != null ? 'prpgtmthCodeNm : ' + plantInfo.prpgtmthCodeNm : 'prpgtmthCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.lighttdemanddoCodeNm != null ? 'lighttdemanddoCodeNm : ' + plantInfo.lighttdemanddoCodeNm : 'lighttdemanddoCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.postngplaceCodeNm != null ? 'postngplaceCodeNm : ' + plantInfo.postngplaceCodeNm : 'postngplaceCodeNm 값이 null입니다.'}"></div>
+        <div th:text="${plantInfo.dlthtsCodeNm != null ? 'dlthtsCodeNm : ' + plantInfo.dlthtsCodeNm : 'dlthtsCodeNm 값이 null입니다.'}"></div>
         <br>
     </li>
 </ul>

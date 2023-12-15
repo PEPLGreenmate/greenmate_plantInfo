@@ -1,7 +1,7 @@
 package plant.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import plant.demo.service.PlantData;
+import plant.demo.entity.PlantInfo;
 
-public interface PlantDataRepository extends JpaRepository<PlantData, String> {
+public interface PlantDataRepository extends JpaRepository<PlantInfo, String> {
 }

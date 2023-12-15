@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
 <head>
     <title>API Crawling</title>
 </head>
 <body>
-<button id="fetchButton" onclick="fetchData()">API 크롤링</button>
+<button id="fetchButton1" onclick="fetchData1()">API 크롤링</button>
+<button id="fetchButton2" onclick="fetchData2()">이미지 다운받기</button>
+<br>
 <p id="loadingText" style="display: none;">API 데이터 크롤링 중...</p>
 
 
 <script>
-
-    function fetchData() {
-        document.getElementById('fetchButton').style.display = 'none';
+    function fetchData1() {
         document.getElementById('loadingText').style.display = 'block';
-
         window.location.href = 'http://localhost:8080/plantDetail';
+    }
 
+    function fetchData2() {
+        document.getElementById('loadingText').style.display = 'block';
+        window.location.href = 'http://localhost:8080/plantImage';
     }
 </script>
 </body>

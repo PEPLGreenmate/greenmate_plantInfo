@@ -1,29 +1,25 @@
 package plant.demo.service;
 
 import jakarta.transaction.Transactional;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-
 import org.xml.sax.InputSource;
+import plant.demo.entity.PlantInfo;
+import plant.demo.repository.PlantDataRepository;
 
-import java.io.StringReader;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
-
+import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import plant.demo.repository.PlantDataRepository;
-
-import org.dom4j.Document;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-
-
 @Service
-public class ApiDataCrawling {
+public class PlantApiDataCrawling {
     private final WebClient webClient;
     private final String apiKey;
     private String totalCount;
@@ -34,18 +30,16 @@ public class ApiDataCrawling {
     @Autowired
     private PlantDataRepository plantDataRepository;
 
-    public ApiDataCrawling() {
+    public PlantApiDataCrawling() {
         this.apiKey = "202305306IYNDRHJQBHJ26YHPN6IDG";
         this.webClient = WebClient.create("http://api.nongsaro.go.kr");
         this.numOfRows = "100";
         this.pageNo = "1";
         this.plantDetailField = new String[]{"cntntsNo", "plntbneNm", "plntzrNm", "distbNm", "fmlNm", "orgplceInfo", "adviseInfo", "growthHgInfo", "growthAraInfo", "smellCode", "toxctyInfo", "managelevelCode", "grwtveCode", "grwhTpCode", "winterLwetTpCode", "hdCode", "frtlzrInfo", "watercycleSprngCode", "watercycleSummerCode", "watercycleAutumnCode", "watercycleWinterCode", "speclmanageInfo", "fncltyInfo", "managedemanddoCode"};
-
     }
 
     public PlantDataList fetchGardenListData() throws Exception {
-        //List<PlantDataList> plantDataLists = new ArrayList<>();
-        List<PlantData> plants = new ArrayList<>();
+        List<PlantInfo> plants = new ArrayList<>();
 
         System.out.println("API 데이터 크롤링 중...");
 
@@ -72,10 +66,10 @@ public class ApiDataCrawling {
             // 각 item 요소의 자식 요소를 사용하려면 item.element("요소이름")을 사용하면 됩니다.
             String cntntsNo = item.elementText("cntntsNo");
             String cntntsSj = item.elementText("cntntsSj");
-            PlantData plantData = new PlantData();
-            plantData.setCntntsNo(cntntsNo);
-            plantData.setCntntsSj(cntntsSj);
-            plants.add(plantData);
+            PlantInfo plantInfo = new PlantInfo();
+            plantInfo.setCntntsNo(cntntsNo);
+            plantInfo.setCntntsSj(cntntsSj);
+            plants.add(plantInfo);
         }
 
 
@@ -107,13 +101,13 @@ public class ApiDataCrawling {
                 // 각 item 요소의 자식 요소를 사용하려면 item.element("요소이름")을 사용하면 됩니다.
                 String cntntsNo = item.elementText("cntntsNo");
                 String cntntsSj = item.elementText("cntntsSj");
-                PlantData plantData = new PlantData();
-                plantData.setCntntsNo(cntntsNo);
-                plantData.setCntntsSj(cntntsSj);
+                PlantInfo plantInfo = new PlantInfo();
+                plantInfo.setCntntsNo(cntntsNo);
+                plantInfo.setCntntsSj(cntntsSj);
                 //System.out.println("CntntsNo :"+cntntsNo+", CntntsSj : "+cntntsSj);
                 //System.out.println("CntntsNo : "+plantData.getCntntsNo()+", cntntsSj : "+plantData.getCntntsSj());
 
-                plants.add(plantData);
+                plants.add(plantInfo);
             }
 
             //System.out.println(res);
@@ -125,15 +119,14 @@ public class ApiDataCrawling {
         allPlantDataList.setItems(plants);
 
 
-
         System.out.println("식물 상세 정보 데이터베이스에 저장 중...");
         //PlantData에 Detail 값까지 저장
-        for (PlantData plantData : plants) {
+        for (PlantInfo plantInfo : plants) {
             String res = webClient.get()
                     .uri(uriBuilder -> uriBuilder
                             .path("/service/garden/gardenDtl")
                             .queryParam("apiKey", this.apiKey)
-                            .queryParam("cntntsNo", plantData.getCntntsNo())
+                            .queryParam("cntntsNo", plantInfo.getCntntsNo())
                             .build())
                     .retrieve()
                     .bodyToMono(String.class)
@@ -146,19 +139,19 @@ public class ApiDataCrawling {
             Element body_ = root_.element("body");
             Element item = body_.element("item");
 
-            Field[] fields = PlantData.class.getDeclaredFields();
+            Field[] fields = PlantInfo.class.getDeclaredFields();
             for (Field field : fields) {
                 String fieldName = field.getName();
                 if (!fieldName.equals("cntntsNo") & !fieldName.equals("cntntsSj")) {
                     Element child = item.element(fieldName);
-                    if (child==null){
+                    if (child == null) {
                         System.out.println(fieldName);
                     }
                     else {
                         String fieldValue = child.getText();
                         field.setAccessible(true);
                         try {
-                            field.set(plantData, fieldValue);
+                            field.set(plantInfo, fieldValue);
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
                         }
@@ -167,7 +160,7 @@ public class ApiDataCrawling {
                 }
             }
 
-            saveData(plantData);
+            saveData(plantInfo);
 
         }
 
@@ -176,13 +169,14 @@ public class ApiDataCrawling {
     }
 
     @Transactional
-    public void saveData(PlantData plantData) {
-        if (plantData.getCntntsNo() == null) {
+    public void saveData(PlantInfo plantInfo) {
+        if (plantInfo.getCntntsNo() == null) {
             System.out.println("CntntsNo 필드가 null 입니다.");
-            System.out.println("CntntsNo : " + plantData.getCntntsNo());
-            System.out.println("CntntsSj : " + plantData.getCntntsSj());
-        } else {
-            plantDataRepository.save(plantData);
+            System.out.println("CntntsNo : " + plantInfo.getCntntsNo());
+            System.out.println("CntntsSj : " + plantInfo.getCntntsSj());
+        }
+        else {
+            plantDataRepository.save(plantInfo);
         }
     }
 
